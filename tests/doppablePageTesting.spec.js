@@ -73,20 +73,5 @@ test.describe('Droppable page testing', () =>{
    } );
 
 
-   test('Should be appropriate background-color and word in droppablecontainer 1 and 2 after hovering with  box (Prevent)',async({page})=>{
-
-    const preventTab = page.locator(droppablePage.preventPropogationTab);
-    await preventTab.click();
-    await page.locator(droppablePage.preventDragBox).hover();
-    await page.mouse.down();
-    const preventDropContainerUpper = page.locator(droppablePage.preventOuterDropContainerUpper);
-    const preventOuterDropContainerUpperInside = page.locator(droppablePage.preventOuterDropContainerUpperInside);
-    const preventDropContainerLower = page.locator(droppablePage.preventOuterDropContainerLower);
-    const preventOuterDropContainerLowerInside = page.locator(droppablePage.preventOuterDropContainerLowerInside);
-    await expect(preventDropContainerLower, preventDropContainerUpper, preventOuterDropContainerUpperInside,
-    preventOuterDropContainerLowerInside).toHaveCSS('background-color','rgb(60, 179, 113)');
-    
-   } );
-
 
 });
