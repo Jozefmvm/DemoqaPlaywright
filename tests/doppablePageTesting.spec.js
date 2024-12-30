@@ -15,11 +15,11 @@ test.beforeEach(async ({ page }, testInfo) => {
 
 test.describe('Droppable page testing', () =>{
 
-  test('Should be appropriate background-color and word in droppablecontainer after dropping draggablecotainer(simple)', async ({ page }) => {
+  test('Should be appropriate background-color and word in droppablecontainer after dropping draggablecotainer (simple)', async ({ page }) => {
 
-    await page.locator(droppablePage.draggableContainer).hover()
+    await page.locator(droppablePage.draggableContainer).hover();
     await page.mouse.down();
-    await page.locator(droppablePage.droppableContainer).hover()
+    await page.locator(droppablePage.droppableContainer).hover();
     await page.mouse.up();
     const droppableContainer = page.locator(droppablePage.droppableContainer);
     await expect (droppableContainer).toHaveCSS('background-color','rgb(70, 130, 180)');
@@ -28,30 +28,63 @@ test.describe('Droppable page testing', () =>{
   });
 
 
-  test('Should be appropriate background-color and word in droppablecontainer after dropping acceptable box(Accept)',async({page})=>{
+  test('Should be appropriate background-color and word in droppablecontainer after dropping acceptable box (Accept)',async({page})=>{
 
-   const acceptPage = page.locator(droppablePage.acceptTab);
-   await acceptPage.click();
-   await page.locator(droppablePage.acceptableBox).hover()
+   const acceptTab = page.locator(droppablePage.acceptTab);
+   await acceptTab.click();
+   await page.locator(droppablePage.acceptableBox).hover();
    await page.mouse.down();
    await page.locator(droppablePage.acceptDropContainer).hover()
    await page.mouse.up();
    const acceptDropContainer = page.locator(droppablePage.acceptDropContainer);
    await expect(acceptDropContainer).toHaveCSS('background-color','rgb(70, 130, 180)');
+   await expect (acceptDropContainer).toHaveText('Dropped!');
    
   } );
 
 
-  test('Should be appropriate background-color and word in droppablecontainer after dropping notacceptable box(Accept)',async({page})=>{
+  test('Should be appropriate background-color and word in droppablecontainer after hovering with acceptable box (Accept)',async({page})=>{
 
-    const acceptPage = page.locator(droppablePage.acceptTab);
-    await acceptPage.click();
-    await page.locator(droppablePage.notAcceptableBox).hover()
+    const acceptTab = page.locator(droppablePage.acceptTab);
+    await acceptTab.click();
+    await page.locator(droppablePage.acceptableBox).hover();
     await page.mouse.down();
-    await page.locator(droppablePage.acceptDropContainer).hover()
+    await page.locator(droppablePage.acceptDropContainer).hover();
+    await page.mouse.down();
+    const acceptDropContainer = page.locator(droppablePage.acceptDropContainer);
+    await expect(acceptDropContainer).toHaveCSS('background-color','rgb(60, 179, 113)');
+    await expect(acceptDropContainer).toHaveText('Drop here');
+    
+   } );
+
+
+  test('Should be appropriate background-color and word in droppablecontainer after dropping notacceptable box (Accept)',async({page})=>{
+
+    const acceptTab = page.locator(droppablePage.acceptTab);
+    await acceptTab.click();
+    await page.locator(droppablePage.notAcceptableBox).hover();
+    await page.mouse.down();
+    await page.locator(droppablePage.acceptDropContainer).hover();
     await page.mouse.up();
     const acceptDropContainer = page.locator(droppablePage.acceptDropContainer);
     await expect(acceptDropContainer).toHaveCSS('background-color','rgba(0, 0, 0, 0)');
+    await expect (acceptDropContainer).toHaveText('Drop here');
+    
+   } );
+
+
+   test('Should be appropriate background-color and word in droppablecontainer 1 and 2 after hovering with  box (Prevent)',async({page})=>{
+
+    const preventTab = page.locator(droppablePage.preventPropogationTab);
+    await preventTab.click();
+    await page.locator(droppablePage.preventDragBox).hover();
+    await page.mouse.down();
+    const preventDropContainerUpper = page.locator(droppablePage.preventOuterDropContainerUpper);
+    const preventOuterDropContainerUpperInside = page.locator(droppablePage.preventOuterDropContainerUpperInside);
+    const preventDropContainerLower = page.locator(droppablePage.preventOuterDropContainerLower);
+    const preventOuterDropContainerLowerInside = page.locator(droppablePage.preventOuterDropContainerLowerInside);
+    await expect(preventDropContainerLower, preventDropContainerUpper, preventOuterDropContainerUpperInside,
+    preventOuterDropContainerLowerInside).toHaveCSS('background-color','rgb(60, 179, 113)');
     
    } );
 

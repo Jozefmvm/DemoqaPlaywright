@@ -11,6 +11,14 @@ class DroppablePage{
      this.acceptableBox = '[class="accept-drop-container"] #acceptable';
      this.notAcceptableBox = '[class="accept-drop-container"] #notAcceptable';
      this.acceptDropContainer = '[class="accept-drop-container"] #droppable';
+     this.preventDragBox = '[class="pp-drop-container"] #dragBox';
+     this.preventOuterDropContainerUpper = '#notGreedyDropBox';
+     this.preventOuterDropContainerUpperInside = '#notGreedyDropBox #notGreedyInnerDropBox';
+     this.preventOuterDropContainerLower = '#greedyDropBox';
+     this.preventOuterDropContainerLowerInside = '#greedyDropBox #greedyDropBoxInner';
+
+
+
     }
 
 }
