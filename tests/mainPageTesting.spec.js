@@ -18,7 +18,7 @@ test.describe('MainPageTesting', () =>{
 
   })
 
-  test('Should be visible logos', async ({ page }) => {
+  test('Should be visible logo', async ({ page }) => {
 
     const logo = page.locator(mainpage.logoImgHeader);
     await expect(logo).toBeVisible();

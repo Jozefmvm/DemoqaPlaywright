@@ -1,7 +1,9 @@
-class MainPage{
+const BasePage = require('./BasePage');
+class MainPage extends BasePage{
 
-    constructor(){
-        
+    constructor(page){
+     super(page);
+     this.page = page;
      this.logoImgHeader = 'header a img[src="/images/Toolsqa.jpg"]';
      this.elementsButton =  '//h5[contains(text(),"Elements")]';
      this.formsButton = '//h5[contains(text(),"Forms")]';

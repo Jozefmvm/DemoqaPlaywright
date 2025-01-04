@@ -1,10 +1,10 @@
 
 const { test, expect } = require('@playwright/test');
-const { MainPage } = require('../PageObject/MainPage');
 const { DroppablePage } = require('../PageObject/DroppablePage');
 const { ADDRGETNETWORKPARAMS } = require('dns');
-const mainpage = new MainPage();
 const droppablePage = new DroppablePage();
+
+
 
 test.beforeEach(async ({ page }, testInfo) => {
 
@@ -71,7 +71,6 @@ test.describe('Droppable page testing', () =>{
     await expect (acceptDropContainer).toHaveText('Drop here');
     
    } );
-
 
 
 });
