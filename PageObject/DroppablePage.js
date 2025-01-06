@@ -2,6 +2,7 @@ const BasePage = require('./BasePage');
 class DroppablePage extends BasePage{
 
     constructor(page){
+
      super(page);
      this.page = page;
      this.draggableContainer = '[class="simple-drop-container"] #draggable';
@@ -18,7 +19,12 @@ class DroppablePage extends BasePage{
      this.preventOuterDropContainerUpperInside = '#notGreedyDropBox #notGreedyInnerDropBox';
      this.preventOuterDropContainerLower = '#greedyDropBox';
      this.preventOuterDropContainerLowerInside = '#greedyDropBox #greedyDropBoxInner';
+     this.willReventBox = '#revertable';
+     this.notReventBox = '#notRevertable';
+     this.reventDropContainer = '[class="revertable-drop-container"] [class*="drop-box ui-droppable"]';
+
     }
+
 
 }
 

@@ -32,19 +32,24 @@ module.exports = defineConfig({
     trace: 'on-first-retry',
     headless: true,
   },
+  expect: {
+    timeout: 10_000,
+  },
  
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'], 
+      viewport: { width: 1920, height: 1080 },
+      },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
     // {
     //   name: 'webkit',

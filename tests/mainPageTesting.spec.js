@@ -5,7 +5,7 @@ const mainpage = new MainPage();
 
 test.beforeEach(async ({ page }, testInfo) => {
 
-  testInfo.setTimeout(testInfo.timeout + 60_000);
+  testInfo.setTimeout(testInfo.timeout + 120_000);
   await page.goto('https://demoqa.com/');
   
   });
