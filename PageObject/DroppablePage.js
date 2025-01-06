@@ -28,4 +28,4 @@ class DroppablePage extends BasePage{
 
 }
 
-module.exports = { DroppablePage }
+module.exports = { DroppablePage };
